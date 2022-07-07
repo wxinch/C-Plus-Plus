@@ -1,4 +1,4 @@
-// 插入排序
+// 插入排序(从小到大排)
 /**
  *
  * \file
@@ -55,17 +55,18 @@ namespace sorting {
  * @tparam T type of array
  * @param [in,out] arr Array to be sorted
  * @param n Size of Array
+ * 
  */
 template <typename T>
 void insertionSort(T *arr, int n) {
-    for (int i = 1; i < n; i++) {
-        T temp = arr[i];
-        int j = i - 1;
+    for (int i = 1; i < n; i++) {  // [0, i-1]为已经排序好的序列，[i, n-1]为待插入的元素，i表示已排好的元素数目
+        T temp = arr[i];           // temp为本次循环中待插入元素，共需要执行循环n-1次
+        int j = i - 1;             // arr[j]为已排好序列的最后一个元素，下面while循环中将arr[j]到arr[0]依次与temp比较
         while (j >= 0 && temp < arr[j]) {
-            arr[j + 1] = arr[j];
+            arr[j + 1] = arr[j];   // 当arr[j]大于temp时，将arr[j]向后移动一位; 当arr[j]小于temp时，直接结束循环
             j--;
         }
-        arr[j + 1] = temp;
+        arr[j + 1] = temp;         // 循环结束时，必定有arr[j]小于等于temp或者j=-1，将temp放置于j+1位置
     }
 }
 

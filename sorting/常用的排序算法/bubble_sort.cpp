@@ -56,10 +56,16 @@ int main() {
         numbers.push_back(num);
     }
 
-    // Bubble Sorting
+    // Bubble Sorting（从小到大排）
+    /* 
+    分为两层循环：
+        外层循环每循环一次可以完成一个位置的排序，可移动元素数目减一；
+        内层循环从第一个元素开始，逐步和相邻元素比较，大的元素往后移动，循环结束后最后一个可移动元素应为最大值
+     */
     for (int i = 0; (i < n) && (swap_check); i++) {
+        // 当内层循环至少发生一次元素移动时，swap_check才为true，否则认为已经完成排序，提前结束外层循环
         swap_check = false;
-        for (int j = 0; j < n - 1 - i; j++) {
+        for (int j = 0; j < n - 1 - i; j++) {  // 内层循环最末尾元素下标为n-1-i，外层循环每运行一次，可移动元素减少一个
             if (numbers[j] > numbers[j + 1]) {
                 swap_check = true;
                 std::swap(numbers[j],

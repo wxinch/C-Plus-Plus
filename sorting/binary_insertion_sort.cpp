@@ -1,3 +1,4 @@
+// 二分插入排序
 /**
  * \file
  * \brief [Binary Insertion Sort Algorithm
